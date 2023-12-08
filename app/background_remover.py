@@ -30,9 +30,10 @@ def bg_rmv(
         image_bg_rmv = remove(enhanced_pil_image)
 
         # Create output directory
-        output_dir = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)) + "/background_remover"
-        )
+        if output_dir == '':
+            output_dir = os.path.join(
+                os.path.dirname(os.path.abspath(__file__)) + "/background_remover"
+            )
 
         os.makedirs(output_dir, exist_ok=True)
 
