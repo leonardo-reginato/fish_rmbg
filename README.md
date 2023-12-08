@@ -18,12 +18,13 @@ git clone https://github.com/LeonardoFonsecaR7/fish_background_remover.git
 ```
 2. Navigate to the project directory:
 ```bash
-cd fish_background_remover
+cd fish_background_remover/app
 ```
 3. Run the application:
 ```bash
 python background_remover.py [photos_input_dir] [output_dir] [contrast_factor]
 ```
+
 - [photos_input_dir]: Path to the directory containing the images to process.
 - [output_dir] (optional): Path to the directory where the processed images will be saved. If not provided, the default is the "background_remover" directory inside the project folder.
 - [contrast_factor] (optional): A floating-point number representing the contrast enhancement factor. Default is 1.2.
