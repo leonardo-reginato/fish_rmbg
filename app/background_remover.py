@@ -6,7 +6,7 @@ from PIL import Image, Image, ImageEnhance
 
 
 def bg_rmv(
-    photos_input_dir: str, output_dir: str = "", contrast_factor: float = 1.2
+    photos_input_dir: str, output_dir: str = "", contrast_factor: float = None
 ) -> bool:
     for filename in tqdm(os.listdir(photos_input_dir)):
         image_path = os.path.join(photos_input_dir, filename)
@@ -24,10 +24,11 @@ def bg_rmv(
 
         # Enhance contrast
         enhancer = ImageEnhance.Contrast(image)
-        enhanced_pil_image = enhancer.enhance(contrast_factor)
+        if contrast_factor:
+            image = enhancer.enhance(contrast_factor)
 
         # Removing BG
-        image_bg_rmv = remove(enhanced_pil_image)
+        image_bg_rmv = remove(image)
 
         # Create output directory
         if output_dir == '':
