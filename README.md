@@ -37,7 +37,7 @@ python background_remover.py [photos_input_dir] [output_dir] [contrast_factor]
 - [contrast_factor] (optional): A floating-point number representing the contrast enhancement factor. Default is 1.2.
 4. Example:
 ```bash
-python background_remover.py path/to/images/ output_folder 1.5
+python background_remover.py path/to/images/folder output/image/folder 1.5
 ```
 This command will process images in the "path/to/images/" directory, save the output in the "output_folder," and use a contrast enhancement factor of 1.5.
 
