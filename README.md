@@ -2,6 +2,11 @@
 
 This Python application utilizes the `rembg`, `PIL`, and `tqdm` libraries to remove the background from a set of images. It enhances the contrast of the images before removing the background to improve the overall result.
 
+## Requirements
+```bash
+python: >3.7, <3.12
+```
+
 ## Installation
 1. Clone the repository:
 ```bash
