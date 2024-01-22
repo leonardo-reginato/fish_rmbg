@@ -3,22 +3,24 @@
 This Python application utilizes the `rembg`, `PIL`, and `tqdm` libraries to remove the background from a set of images. It enhances the contrast of the images before removing the background to improve the overall result.
 
 ## Installation
-
-Before running the application, ensure you have the required libraries installed. You can install them using the following command:
-
-```bash
-pip install -r requirements.txt
-```
-The requirements installation will make sure that you have [rembg library](https://github.com/danielgatis/rembg) installed as it is not included in the standard Python libraries.
-
-## Usage
 1. Clone the repository:
 ```bash
 git clone https://github.com/LeonardoFonsecaR7/fish_background_remover.git
 ```
 2. Navigate to the project directory:
 ```bash
-cd fish_background_remover/app
+cd fish_background_remover/
+```
+3. Before running the application, ensure you have the required libraries installed. You can install them using the following command:
+```bash
+pip install -r requirements.txt
+```
+The requirements installation will make sure that you have [rembg library](https://github.com/danielgatis/rembg) installed as it is not included in the standard Python libraries.
+
+## Usage
+4. Navigate to the project directory:
+```bash
+cd app/
 ```
 3. Run the application:
 ```bash
