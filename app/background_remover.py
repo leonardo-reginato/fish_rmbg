@@ -6,14 +6,17 @@ from PIL import Image, Image, ImageEnhance
 
 
 def bg_rmv(
-    photos_input_dir: str, output_dir: str = "", contrast_factor: float = None
+    photos_input_dir: str,
+    output_dir: str = "",
+    contrast_factor: float = None,
+    output_ext: str = "png",
 ) -> bool:
     for filename in tqdm(os.listdir(photos_input_dir)):
         image_path = os.path.join(photos_input_dir, filename)
 
         # Check if the file is an image
         if not (
-            image_path.lower().endswith((".png", ".jpg", ".jpeg"))
+            image_path.lower().endswith((".png", ".jpg", ".jpeg", ".nef"))
             and os.path.isfile(image_path)
         ):
             print(f"Skipping {image_path} - not a valid image file.")
@@ -31,7 +34,7 @@ def bg_rmv(
         image_bg_rmv = remove(image)
 
         # Create output directory
-        if output_dir == '':
+        if output_dir == "":
             output_dir = os.path.join(
                 os.path.dirname(os.path.abspath(__file__)) + "/background_remover"
             )
@@ -40,7 +43,7 @@ def bg_rmv(
 
         # Adjust the image extension to png
         output_file_path = os.path.join(output_dir, "bg_rmv_" + filename)
-        output_file_path = os.path.splitext(output_file_path)[0] + ".png"
+        output_file_path = os.path.splitext(output_file_path)[0] + "." + output_ext
 
         # Saving the image
         image_bg_rmv.save(output_file_path)
@@ -52,11 +55,21 @@ if __name__ in "__main__":
     try:
         output = sys.argv[2]
     except:
-        output = ""
+        output = "../images/background_remover"
 
     try:
-        ctr = sys.argv[3]
+        ctr = int(sys.argv[3])
     except:
-        ctr = 1.2
+        ctr = None
 
-    bg_rmv(photos_input_dir=sys.argv[1], output_dir=output, contrast_factor=ctr)
+    try:
+        output_ext = sys.argv[4]
+    except:
+        output_ext = "png"
+
+    bg_rmv(
+        photos_input_dir=sys.argv[1],
+        output_dir=output,
+        contrast_factor=ctr,
+        output_ext=output_ext,
+    )
