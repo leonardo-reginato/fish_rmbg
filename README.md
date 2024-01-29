@@ -31,6 +31,10 @@ cd app/
 ```bash
 python background_remover.py [photos_input_dir] [output_dir] [contrast_factor]
 ```
+3.1 Run application via Interface:
+```bash
+python gui.py
+```
 
 - [photos_input_dir]: Path to the directory containing the images to process.
 - [output_dir] (optional): Path to the directory where the processed images will be saved. If not provided, the default is the "/images/background_remover/" directory inside the project folder.
