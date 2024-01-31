@@ -2,9 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 import os
-import cv2
 from PIL import Image, ImageEnhance
-from tqdm import tqdm
 from rembg import remove
 
 
@@ -16,6 +14,17 @@ class ImageProcessorApp:
         self.input_path = tk.StringVar()
         self.output_path = tk.StringVar()
         self.contrast_value = tk.DoubleVar()
+        self.background_color = tk.StringVar(
+            value="transparent"
+        )  # Default to transparent
+        self.colors_dict = {
+            "black": (0, 0, 0, 255),
+            "white": (255, 255, 255, 255),
+            "blue": (0, 0, 255, 255),
+            "navy": (0, 0, 128, 255),
+            "green": (0, 128, 0, 255),
+            "light_gray": (211, 211, 211, 255),
+        }
 
         self.create_widgets()
 
@@ -54,6 +63,17 @@ class ImageProcessorApp:
             row=0, column=1, padx=5, pady=5
         )
 
+        # Background Color Selection
+        color_frame = tk.Frame(self.master)
+        color_frame.pack(pady=10)
+        tk.Label(color_frame, text="Background Color:").grid(
+            row=0, column=0, padx=5, pady=5
+        )
+        options = ["black", "gray", "white", "blue", "green", "transparent"]
+        tk.OptionMenu(color_frame, self.background_color, *options).grid(
+            row=0, column=1, padx=5, pady=5
+        )
+
         # Run Button
         run_button = tk.Button(self.master, text="Run", command=self.process_images)
         run_button.pack(pady=10)
@@ -70,6 +90,7 @@ class ImageProcessorApp:
         input_path = self.input_path.get()
         output_path = self.output_path.get()
         contrast_value = self.contrast_value.get()
+        background_color = self.colors_dict[self.background_color.get()]
 
         if not input_path or not output_path:
             messagebox.showerror("Error", "Please select input and output folders.")
@@ -95,7 +116,7 @@ class ImageProcessorApp:
                 enhancer = ImageEnhance.Contrast(image)
                 image = enhancer.enhance(contrast_value)
 
-            image_bg_rmv = remove(image)
+            image_bg_rmv = remove(image, bgcolor=background_color)
 
             output_image_path = os.path.splitext(output_image_path)[0] + "_bg_rmv.png"
             image_bg_rmv.save(output_image_path)
