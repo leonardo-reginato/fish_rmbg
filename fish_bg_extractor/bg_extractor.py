@@ -5,7 +5,7 @@ from rembg import remove
 from PIL import Image, Image, ImageEnhance
 
 
-def bg_rmv(
+def bg_extractor(
     photos_input_dir: str,
     output_dir: str = "",
     contrast_factor: float = None,
@@ -67,7 +67,7 @@ if __name__ in "__main__":
     except:
         output_ext = "png"
 
-    bg_rmv(
+    bg_extractor(
         photos_input_dir=sys.argv[1],
         output_dir=output,
         contrast_factor=ctr,

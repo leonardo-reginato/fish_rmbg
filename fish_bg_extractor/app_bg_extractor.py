@@ -6,7 +6,7 @@ from PIL import Image, ImageEnhance
 from rembg import remove
 
 
-class ImageProcessorApp:
+class FishBGExtractorApp:
     def __init__(self, master):
         self.master = master
         self.master.title("Fish Background Remover")
@@ -126,7 +126,7 @@ class ImageProcessorApp:
 
 def main():
     root = tk.Tk()
-    app = ImageProcessorApp(root)
+    app = FishBGExtractorApp(root)
     root.mainloop()
 
 
