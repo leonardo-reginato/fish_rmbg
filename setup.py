@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 # Package metadata
-NAME = "fish-bg-extractor"
-VERSION = "0.1.0"
+NAME = "fish_rmbg"
+VERSION = "0.2.0"
 DESCRIPTION = "Application to remove the background of a fish images"
 URL = "https://github.com/leonardo-reginato/FishBGExtractor.git"
 AUTHOR = "Leonardo F Reginato"
@@ -39,6 +39,6 @@ setup(
     packages=find_packages(),
     install_requires=INSTALL_REQUIRES,
     entry_points={
-        "console_scripts": ["fish_bg_app = fish_bg_extractor.app_bg_extractor:main"]
+        "console_scripts": ["fish_rmbg_app = run_gui:main"],
     },
 )
