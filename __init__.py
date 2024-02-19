@@ -1,4 +1,4 @@
-from fish_bg_extractor import bg_extractor, FishBGExtractorApp
+from fish_rmbg import Rmbg, RmbgGUI
 
-__all__ = ["bg_rmv", "ImageProcessorApp"]
-__version__ = "0.1.0"
+__all__ = ["Rmbg", "Rmbg"]
+__version__ = "0.2.0"
